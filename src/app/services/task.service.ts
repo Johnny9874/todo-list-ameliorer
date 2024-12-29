@@ -6,11 +6,12 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class TaskService {
-  private apiUrl = 'http://localhost:5000';
+
+  private apiUrl = 'http://localhost:5000/api/tasks'; // Remplace par ton URL API
 
   constructor(private http: HttpClient) { }
 
-  getTasks(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/tasks`);
+  getTasks(): Observable<any[]> {
+    return this.http.get<any[]>(this.apiUrl); // Effectue une requête GET pour récupérer les tâches
   }
 }

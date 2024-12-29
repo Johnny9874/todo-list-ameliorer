@@ -1,6 +1,11 @@
-<div *ngFor="let task of tasks">
-    <h3>{{ task.title }}</h3>
-    <p>Description: {{ task.description }}</p>
-    <p>Status: {{ task.status }}</p>
-  </div>  
-  
+<div *ngIf="tasks.length > 0; else noTasks">
+  <ul>
+    <li *ngFor="let task of tasks">
+      {{ task.name }} <!-- Affiche le nom de chaque tâche -->
+    </li>
+  </ul>
+</div>
+
+<ng-template #noTasks>
+  <p>Aucune tâche à afficher.</p>
+</ng-template>
